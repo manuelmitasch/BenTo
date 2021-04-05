@@ -18,6 +18,7 @@ BentoProp::BentoProp(var params) :
 {
 	updateRate = params.getProperty("updateRate", 50);
 	remoteHost = connectionCC.addStringParameter("Remote Host", "IP of the prop on the network", "192.168.0.100");
+	remotePort = connectionCC.addIntParameter("Remote Port", "Port to stream colors to", 8888, 1024, 65535);
 
 	serialParam = new SerialDeviceParameter("Serial Device", "For connecting props trhough USB", true);
 	serialParam->openBaudRate = 115200;
@@ -134,7 +135,7 @@ void BentoProp::sendColorsToPropInternal()
 	{
 		int length = jmin(maxPacketSize, dataSize - offset);
 
-		int dataSent = sender.write(remoteHost->stringValue(), remotePort, data.getRawDataPointer() + offset, length);
+		int dataSent = sender.write(remoteHost->stringValue(), remotePort->intValue(), data.getRawDataPointer() + offset, length);
 		
 		if (dataSent == -1)
 		{

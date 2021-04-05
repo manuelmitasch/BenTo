@@ -333,7 +333,7 @@ void Prop::sendColorsToProp(bool forceSend)
 
 void Prop::fillTypeOptions(EnumParameter* p)
 {
-	p->addOption("Club", CLUB)->addOption("Ball", BALL)->addOption("Poi", POI)->addOption("Hoop", HOOP)->addOption("Ring", RING)->addOption("Buggeng", BUGGENG)->addOption("Box", BOX)->addOption("Custom", CUSTOM);
+	p->addOption("Club", CLUB)->addOption("Ball", BALL)->addOption("Poi", POI)->addOption("Hoop", HOOP)->addOption("Ring", RING)->addOption("Buggeng", BUGGENG)->addOption("Box", BOX)->addOption("Custom", CUSTOM)->addOption("Strip", STRIP);
 }
 
 void Prop::initBaking(BaseColorProvider* block, AfterBakeAction afterBakeAction)

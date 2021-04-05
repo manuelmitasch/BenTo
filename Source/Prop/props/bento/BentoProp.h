@@ -22,8 +22,8 @@ public:
 	BentoProp(var params);
 	virtual ~BentoProp();
 	StringParameter * remoteHost;
+	IntParameter* remotePort;
 
-	const int remotePort = 8888;
 	DatagramSocket sender;
 	OSCSender oscSender;
 

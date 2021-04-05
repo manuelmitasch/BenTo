@@ -22,7 +22,7 @@ SpatItem::SpatItem() :
 	addChildControllableContainer(&filterManager);
 
 	shape = addEnumParameter("Shape", "The shape of the prop");
-	shape->addOption("Club", Prop::Shape::CLUB)->addOption("Ball", Prop::Shape::BALL)->addOption("Poi", Prop::Shape::POI)->addOption("Hoop", Prop::Shape::HOOP)->addOption("Custom", Prop::Shape::CUSTOM);
+	shape->addOption("Club", Prop::Shape::CLUB)->addOption("Ball", Prop::Shape::BALL)->addOption("Poi", Prop::Shape::POI)->addOption("Hoop", Prop::Shape::HOOP)->addOption("Custom", Prop::Shape::CUSTOM)->addOption("Strip", Prop::Shape::STRIP);
 
 	resolution = addIntParameter("Resolution", "Number of controllable colors in the prop", 32, 1, INT32_MAX);
 	
@@ -75,6 +75,19 @@ void SpatItem::updateHandles()
 	case Prop::Shape::CUSTOM:
 		updateCustomHandles();
 		break;
+
+	case Prop::Shape::STRIP:
+	{
+		handles.add(handlesCC.addPoint2DParameter("Start1", "Position"));
+		handles.add(handlesCC.addPoint2DParameter("End1", "Position"));
+		handles.add(handlesCC.addPoint2DParameter("Start2", "Position"));
+		handles.add(handlesCC.addPoint2DParameter("End2", "Position"));
+		handles[0]->setPoint(.4f, .5f);
+		handles[1]->setPoint(.5f, .5f);
+		handles[2]->setPoint(.6f, .5f);
+		handles[3]->setPoint(.7f, .5f);
+	}
+	break;
 
 	default:
 		break;
@@ -171,6 +184,26 @@ void SpatItem::updatePoints()
 	}
 	break;
 
+	case Prop::Shape::STRIP:
+	{
+		
+		Point<float> startPoint1 = handles[0]->getPoint();
+		Point<float> endPoint1 = handles[1]->getPoint();
+		Point<float> startPoint2 = handles[2]->getPoint();
+		Point<float> endPoint2 = handles[3]->getPoint();
+
+		for (int i = 0; i < numPoints/2; i++)
+		{
+			points.add(startPoint1 + (endPoint1 - startPoint1) * (i * 1.0f / jmax(numPoints/2 - 1, 1)));
+		}
+
+		for (int i = 0; i < numPoints/2; i++)
+		{
+			points.add(startPoint2 + (endPoint2 - startPoint2) * (i * 1.0f / jmax(numPoints / 2 - 1, 1)));
+		}
+		
+	}
+	break;
             
     default:
         break;

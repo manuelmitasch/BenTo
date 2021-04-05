@@ -27,7 +27,7 @@ class Prop :
 	public LightBlockColorProvider::ProviderListener
 {
 public:
-	enum Shape { CLUB, BALL, POI, HOOP, RING, BUGGENG, BOX, CUSTOM };
+	enum Shape { CLUB, BALL, POI, HOOP, RING, BUGGENG, BOX, CUSTOM, STRIP };
 
 	Prop(var params = var());
 	virtual ~Prop();
