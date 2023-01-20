@@ -1,0 +1,22 @@
+# osx
+.DS_Store
+
+# doxygen
+Doxyfile*
+doxygen_sqlite3.db
+html
+*.tmp
+
+examples/
+
+OBJLoader/
+
+.travis.yml
+
+LICENSE
+
+README.md
+
+assets/
+
+code-of-conduct.md
