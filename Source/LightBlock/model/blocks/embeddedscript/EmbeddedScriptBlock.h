@@ -51,7 +51,7 @@ public:
     void getColorsInternal(Array<Colour>* result, Prop* p, double time, int id, int resolution, var params) override;
     void handleEnterExit(bool enter, Array<Prop*> props) override;
 
-    String getTypeString() const override { return "Wasm"; }
+    String getTypeString() const override { return "Embedded"; }
 };
 
 
@@ -60,7 +60,7 @@ class EmbeddedScriptBlockManager :
     public Timer
 {
 public:
-    EmbeddedScriptBlockManager() : UserLightBlockModelManager("Wasm", EMBEDDED_SCRIPT) { startTimerHz(1); }
+    EmbeddedScriptBlockManager() : UserLightBlockModelManager("Embedded", EMBEDDED_SCRIPT) { startTimerHz(1); }
     ~EmbeddedScriptBlockManager() {}
 
     void timerCallback() override { for (auto& i : items) ((EmbeddedScriptBlock*)i)->checkAutoCompile(); }
