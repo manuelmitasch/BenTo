@@ -262,6 +262,8 @@ void PlayerMode::load(String path, bool playAfter)
     curTimeMs = 0;
     isPlaying = false;
     DBG("File loaded, " + String(totalBytes) + " bytes" + ", " + String(totalFrames) + " frames, " + String(totalTime) + " time");
+
+    fileName = path;
   }
 
   if (playAfter)

@@ -51,6 +51,7 @@ public:
   int groupID;
   int localID;
   CRGB groupColor;
+  String fileName;
 
   // control
   bool idMode;
