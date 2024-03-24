@@ -68,3 +68,7 @@ const int buttonPins[BUTTON_COUNT]{ 32 };
 #define SD_MOSI 13
 #define SD_SCK 14
 #define SD_CS 15
+
+#define HAS_VARIANT
+#define HAS_SCRIPTS
+#define HAS_BATTERY
